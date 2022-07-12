@@ -24,7 +24,7 @@ class WdDataset:
             int(1000 * (box[3] / height)),
         ]
 
-    def apply_ocr(self, json_file, width, height):
+    def apply_ocr(self, json_file):
             # get the image
             all = []
             example = {}
