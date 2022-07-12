@@ -1,3 +1,5 @@
+from PIL import Image, ImageDraw, ImageFont
+
 def normalize_box(box, width, height):
      return [
          int(1000 * (box[0] / width)),
