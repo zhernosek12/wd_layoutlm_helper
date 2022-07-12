@@ -24,15 +24,18 @@ class WdDataset:
             int(1000 * (box[3] / height)),
         ]
 
-    def apply_ocr(self, json_file):
+    def apply_ocr(self, json_file, read=True):
             # get the image
             all = []
             example = {}
           
             # get json
-            with open(json_file, encoding="utf8")as f:
-                json_string = f.read()
-                responce = json.loads(json_string)
+            if read == True:
+                with open(json_file, encoding="utf8")as f:
+                    json_string = f.read()
+                    responce = json.loads(json_string)
+            else:
+                responce = json_file
 
             words = []
             actual_boxes = []
