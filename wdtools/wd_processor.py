@@ -14,6 +14,7 @@ class WdDataset:
         self.label2idx = {}
         self.processor = None
         self.batch_size = 4
+        self.device = None
 
     def normalize_box(self, box, width, height):
         return [
@@ -159,13 +160,13 @@ class WdDataset:
             'attention_mask': Sequence(Value(dtype='int64')),
             'token_type_ids': Sequence(Value(dtype='int64')),
             'bbox': Array2D(dtype="int64", shape=(512, 4)),
-            'labels': ClassLabel(num_classes=len(label2idx), names=list(label2idx.keys())),
+            'labels': ClassLabel(num_classes=len(self.label2idx), names=list(self.label2idx.keys())),
         })
         encoded_dataset = dataset.map(
             self.encode_training_example, remove_columns=dataset.column_names, features=training_features, 
             batched=True, batch_size=2
         )
-        encoded_dataset.set_format(type='torch', device=device)
+        encoded_dataset.set_format(type='torch', device=self.device)
         dataloader = torch.utils.data.DataLoader(encoded_dataset, batch_size=self.batch_size, shuffle=True)
         batch = next(iter(dataloader))
         return dataloader
