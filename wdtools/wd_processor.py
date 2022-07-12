@@ -108,7 +108,7 @@ class WdDataset:
             width, height = image.size
             
             json_file = image_path.replace(".png", ".json")
-            example = self.apply_ocr(json_file, width, height)
+            example = self.apply_ocr(json_file)
 
             words = example['words']
             boxes = example['boxes']
