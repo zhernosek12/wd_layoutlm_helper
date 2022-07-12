@@ -73,7 +73,7 @@ def apply_ocr(json_file, width, height):
         return example
 
 
-def my_processor(paths, return_tensors=""):
+def my_processor(paths, processor, return_tensors=""):
     examples = {
         "image": [],
         "input_ids": [],
