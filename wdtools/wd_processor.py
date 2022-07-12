@@ -41,8 +41,8 @@ class WdDataset:
             assert(len(responce["results"][0]['results'][0]) == 1)
 
             for page in responce["results"][0]['results'][0]['textDetection']['pages']:
-                #width = page['width']
-                #height = page['height']
+                width = int(page['width'])
+                height = int(page['height'])
                 for block in page["blocks"]:
                     for line in block["lines"]:
                         for word in line["words"]:
