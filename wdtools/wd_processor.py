@@ -31,7 +31,7 @@ class WdDataset:
           
             # get json
             if read == True:
-                with open(json_file, encoding="utf8")as f:
+                with open(json_file, encoding="utf8") as f:
                     json_string = f.read()
                     responce = json.loads(json_string)
             else:
